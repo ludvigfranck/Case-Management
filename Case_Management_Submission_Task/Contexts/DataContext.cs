@@ -6,7 +6,7 @@ namespace Case_Management_Submission_Task.Contexts
 {
     internal class DataContext : DbContext
     {
-        private readonly string _connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\VisualStudioProjects\Submission_Tasks\00_Submission_Task_Case_Management\Case_Management_Submission_Task\Contexts\sql_db_case_management.mdf;Integrated Security=True;Connect Timeout=30";
+        private readonly string _connectionString = @"";
 
         public DataContext()
         {

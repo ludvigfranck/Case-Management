@@ -20,6 +20,7 @@ namespace Case_Management_Submission_Task.MVVM.ViewModels
         private bool _isPending;
         private bool _isAssigned;
         private bool _isFinished;
+        private string? _comment;
         public EditCasesViewModel(NavigationStore navigationStore, DatabaseService databaseService, CustomerModel customer)
         {
             _navigationStore = navigationStore;
@@ -40,12 +41,12 @@ namespace Case_Management_Submission_Task.MVVM.ViewModels
                         if (IsPending)
                         {
                             string status = "Pending";
-                            await _databaseService.UpdateCaseAsync(_selectedCase, status);
+                            await _databaseService.UpdateCaseAsync(_selectedCase, status, _comment!);
                         }
                         else if (IsAssigned)
                         {
                             string status = "Assigned";
-                            await _databaseService.UpdateCaseAsync(_selectedCase, status);
+                            await _databaseService.UpdateCaseAsync(_selectedCase, status, _comment!);
                         }
                         else if (IsFinished)
                         {
@@ -100,6 +101,12 @@ namespace Case_Management_Submission_Task.MVVM.ViewModels
         {
             get { return _isFinished; }
             set { _isFinished = value; }
+        }
+
+        public string Comment
+        {
+            get { return _comment!; }
+            set { _comment = value; }
         }
 
         public ICommand UpdateCaseCommand { get; }

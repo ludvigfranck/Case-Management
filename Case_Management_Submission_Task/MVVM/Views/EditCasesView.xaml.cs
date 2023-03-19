@@ -35,6 +35,7 @@ namespace Case_Management_Submission_Task.MVVM.Views
                     tb_status.Text = _selectedCase.CaseStatus;
                     tb_time.Text = _selectedCase.Time.ToString();
                     tb_description.Text = _selectedCase.CaseDescription;
+                    tb_comment.Text = _selectedCase.CaseComment;
                     if(_selectedCase.CaseStatus == "Pending")
                         rb_pending.IsChecked = true;
                     else if(_selectedCase.CaseStatus == "Assigned")

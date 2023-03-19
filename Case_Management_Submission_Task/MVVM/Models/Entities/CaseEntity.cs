@@ -18,8 +18,9 @@ namespace Case_Management_Submission_Task.MVVM.Models.Entities
 
         [StringLength(200)]
         public string Description { get; set; } = null!;
-        public string CaseStatus { get; set; } = null!;
+        public string Status { get; set; } = null!;
         public DateTime Time { get; set; }
+        public string Comment { get; set; } = null!;
         
         public CustomerDeviceEntity CustomerDevice { get; set; } = null!;
 
@@ -30,19 +31,21 @@ namespace Case_Management_Submission_Task.MVVM.Models.Entities
             {
                 CaseId = caseModel.CaseId,
                 Description = caseModel.CaseDescription,
-                CaseStatus = caseModel.CaseStatus,
-                Time = caseModel.Time
+                Status = caseModel.CaseStatus,
+                Time = caseModel.Time,
+                Comment = caseModel.CaseComment
             };
         }
 
         public static implicit operator CaseModel(CaseEntity caseEntity)
         {
-            return new CaseEntity
+            return new CaseModel
             {
                 CaseId = caseEntity.CaseId,
-                Description = caseEntity.Description,
-                CaseStatus = caseEntity.CaseStatus,
-                Time = caseEntity.Time
+                CaseDescription = caseEntity.Description,
+                CaseStatus = caseEntity.Status,
+                Time = caseEntity.Time,
+                CaseComment = caseEntity.Comment
             };
         }
     }

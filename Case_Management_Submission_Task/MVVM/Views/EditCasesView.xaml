@@ -93,7 +93,7 @@
 
                             <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Center" Margin="15 0 0 0">
                                 <TextBlock Text="Comment:" FontSize="12" FontWeight="Medium" Margin="0 0 5 0" />
-                                <TextBlock x:Name="tb_comment" FontSize="12" Margin="5 0 0 0" />
+                                <TextBlock x:Name="tb_comment" Text="{Binding SelectedCase.CaseComment}" FontSize="12" Margin="5 0 0 0" />
                             </StackPanel>
 
                         </Grid>
@@ -116,7 +116,7 @@
 
                             <StackPanel Grid.Row="2" VerticalAlignment="Center" Margin="15 0 15 15">
                                 <TextBlock Text="Comment" FontSize="12" FontWeight="Medium" />
-                                <TextBox BorderBrush="Black" BorderThickness="1" />
+                                <TextBox Text="{Binding Comment}" BorderBrush="Black" BorderThickness="1" />
                             </StackPanel>
                             
                         </Grid>

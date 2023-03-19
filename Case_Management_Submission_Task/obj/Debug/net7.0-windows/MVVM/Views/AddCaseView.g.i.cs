@@ -54,7 +54,7 @@ namespace Case_Management_Submission_Task.MVVM.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Case_Management_Submission_Task;V1.0.0.0;component/mvvm/views/addcaseview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Case_Management_Submission_Task;component/mvvm/views/addcaseview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\MVVM\Views\AddCaseView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

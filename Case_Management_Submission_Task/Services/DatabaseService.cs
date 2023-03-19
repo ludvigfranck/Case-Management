@@ -89,8 +89,9 @@ namespace Case_Management_Submission_Task.Services
                 {
                     CaseId = _case.CaseId,
                     CaseDescription = _case.Description,
-                    CaseStatus = _case.CaseStatus,
-                    Time = _case.Time
+                    CaseStatus = _case.Status,
+                    Time = _case.Time,
+                    CaseComment = _case.Comment
                 });
             }
 
@@ -115,8 +116,9 @@ namespace Case_Management_Submission_Task.Services
                 {
                     CaseId = _case.CaseId,
                     CaseDescription = _case.Description,
-                    CaseStatus = _case.CaseStatus,
-                    Time = _case.Time
+                    CaseStatus = _case.Status,
+                    Time = _case.Time,
+                    CaseComment= _case.Comment
                 });
 
             return _cases;
@@ -210,8 +212,9 @@ namespace Case_Management_Submission_Task.Services
                 var caseEntity = new CaseEntity
                 {
                     Description = caseModel.CaseDescription,
-                    CaseStatus = "Pending",
+                    Status = "Pending",
                     Time = DateTime.Now,
+                    Comment = "No current comments",
                     CustomerDevice = _customerDevice!
                 };
 
@@ -226,10 +229,20 @@ namespace Case_Management_Submission_Task.Services
             }
         }
 
-        public async Task UpdateCaseAsync(CaseModel caseModel, string status)
+        public async Task UpdateCaseAsync(CaseModel caseModel, string status, string comment)
         {
             var _caseEntity = await _context.Cases.FirstOrDefaultAsync(x => x.CaseId == caseModel.CaseId);
-            _caseEntity!.CaseStatus = status;
+
+            if (_caseEntity != null)
+            {
+                if(status != null)
+                    _caseEntity.Status = status;
+                else _caseEntity.Status = caseModel.CaseStatus;
+
+                if (comment != null)
+                    _caseEntity.Comment = comment;
+                else _caseEntity.Comment = caseModel.CaseComment;
+            } 
 
             await _context.SaveChangesAsync();
         }
@@ -238,6 +251,8 @@ namespace Case_Management_Submission_Task.Services
         {
             var _caseEntity = await _context.Cases.FirstOrDefaultAsync(x => x.CaseId == caseModel.CaseId);
             _context.Cases.Remove(_caseEntity!);
+
+            MessageBox.Show($"Removed Case: {_caseEntity!.CaseId}");
 
             await _context.SaveChangesAsync();
         }

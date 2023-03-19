@@ -18,22 +18,21 @@ namespace Case_Management_Submission_Task
             {
                 services.AddSingleton<MainWindow>();
                 services.AddSingleton<NavigationStore>();
-                services.AddSingleton<CustomerService>();
-
+                services.AddSingleton<DatabaseService>();
             }).Build();
         }
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            var customerService = app!.Services.GetRequiredService<CustomerService>();
             var navigationStore = app!.Services.GetRequiredService<NavigationStore>();
+            var databaseService = app!.Services.GetRequiredService<DatabaseService>();
 
-            navigationStore.CurrentViewModel = new CustomersViewModel(navigationStore, customerService);
+            navigationStore.CurrentViewModel = new CustomersViewModel(navigationStore, databaseService);
 
             app.Start();
 
             var MainWindow = app.Services.GetRequiredService<MainWindow>();
-            MainWindow.DataContext = new MainViewModel(navigationStore, customerService);
+            MainWindow.DataContext = new MainViewModel(navigationStore, databaseService);
             MainWindow.Show();
 
             base.OnStartup(e);

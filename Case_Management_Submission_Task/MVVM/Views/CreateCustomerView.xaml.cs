@@ -1,4 +1,6 @@
-﻿using Case_Management_Submission_Task.Services;
+﻿using Case_Management_Submission_Task.MVVM.Models;
+using Case_Management_Submission_Task.MVVM.ViewModels;
+using Case_Management_Submission_Task.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,5 +24,6 @@ namespace Case_Management_Submission_Task.MVVM.Views
         {
             InitializeComponent();
         }
+
     }
 }

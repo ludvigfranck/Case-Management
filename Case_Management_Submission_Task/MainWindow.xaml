@@ -32,8 +32,12 @@
                     <views:CreateCustomerView />
                 </DataTemplate>
 
-                <DataTemplate DataType="{x:Type viewmodels:CreateCaseViewModel}">
-                    <views:CreateCaseView />
+                <DataTemplate DataType="{x:Type viewmodels:AddCaseViewModel}">
+                    <views:AddCaseView />
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type viewmodels:EditCasesViewModel}">
+                    <views:EditCasesView />
                 </DataTemplate>
 
             </ContentControl.Resources>

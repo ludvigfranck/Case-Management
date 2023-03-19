@@ -7,7 +7,7 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="MVVM\Views\CreateCaseView.xaml.cs">
+    <Compile Update="MVVM\Views\AddCaseView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="MVVM\Views\CreateCustomerView.xaml.cs">
@@ -16,18 +16,24 @@
     <Compile Update="MVVM\Views\CustomersView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="MVVM\Views\EditCasesView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MVVM\Views\CreateCaseView.xaml">
+    <Page Update="MVVM\Views\AddCaseView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MVVM\Views\CreateCustomerView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MVVM\Views\CustomersView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\Views\EditCasesView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

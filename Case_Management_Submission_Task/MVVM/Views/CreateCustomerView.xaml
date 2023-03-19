@@ -8,7 +8,147 @@
              d:DataContext="{d:DesignInstance Type=viewmodels:CreateCustomerViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <TextBlock Text="Create Customer" />
+    <Grid Margin="20">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="CREATE CUSTOMER" HorizontalAlignment="Center" FontSize="18" FontWeight="Medium"/>
+
+        <Grid Grid.Row="1" VerticalAlignment="Top">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0" Margin="0 0 15 0">
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="Enter First name:" Height="Auto" FontWeight="Medium" />
+                    <Border CornerRadius="0" 
+                    BorderThickness="1" 
+                    BorderBrush="Black" 
+                    Background="White" 
+                    Padding="2" 
+                    Margin="0 0 0 20">
+                        <TextBox Text="{Binding Customer.FirstName}" BorderBrush="Transparent" BorderThickness="0" />
+                    </Border>
+
+                    <TextBlock Text="Enter Last name:" Height="Auto" FontWeight="Medium" />
+                    <Border CornerRadius="0" 
+                    BorderThickness="1" 
+                    BorderBrush="Black" 
+                    Background="White" 
+                    Padding="2" 
+                    Margin="0 0 0 20">
+                        <TextBox Text="{Binding Customer.LastName}" BorderBrush="Transparent" BorderThickness="0" />
+                    </Border>
+
+                    <TextBlock Text="Enter Email address:" Height="Auto" FontWeight="Medium" />
+                    <Border CornerRadius="0" 
+                    BorderThickness="1" 
+                    BorderBrush="Black" 
+                    Background="White" 
+                    Padding="2" 
+                    Margin="0 0 0 20">
+                        <TextBox Text="{Binding Customer.Email}" BorderBrush="Transparent" BorderThickness="0" />
+                    </Border>
+
+                    <TextBlock Text="Enter Phone number:" Height="Auto" FontWeight="Medium" />
+                    <Border CornerRadius="0" 
+                    BorderThickness="1" 
+                    BorderBrush="Black" 
+                    Background="White" 
+                    Padding="2" 
+                    Margin="0 0 0 20">
+                        <TextBox Text="{Binding Customer.PhoneNumber}" BorderBrush="Transparent" BorderThickness="0" />
+                    </Border>
+
+                    <TextBlock Text="Enter Street name:" Height="Auto" FontWeight="Medium" />
+                    <Border CornerRadius="0" 
+                    BorderThickness="1" 
+                    BorderBrush="Black" 
+                    Background="White" 
+                    Padding="2" 
+                    Margin="0 0 0 20">
+                        <TextBox Text="{Binding Customer.StreetName}" BorderBrush="Transparent" BorderThickness="0" />
+                    </Border>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Column="1" Margin="15 0 0 0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" VerticalAlignment="Center">
+
+                    <TextBlock Text="Enter Postal code:" Height="Auto" FontWeight="Medium" />
+                    <Border CornerRadius="0" 
+                    BorderThickness="1" 
+                    BorderBrush="Black" 
+                    Background="White" 
+                    Padding="2"
+                    Margin="0 0 0 20">
+                        <TextBox Text="{Binding Customer.PostalCode}" BorderBrush="Transparent" BorderThickness="0" />
+                    </Border>
+
+                    <TextBlock Text="Enter City:" Height="Auto" FontWeight="Medium" />
+                    <Border CornerRadius="0" 
+                    BorderThickness="1" 
+                    BorderBrush="Black" 
+                    Background="White" 
+                    Padding="2"
+                    Margin="0 0 0 20">
+                        <TextBox Text="{Binding Customer.City}" BorderBrush="Transparent" BorderThickness="0" />
+                    </Border>
+                </StackPanel>
+
+                <Grid Grid.Row="1">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    
+                    <TextBlock Grid.Row="0" Text="Select Device/Devices:" Height="Auto" FontWeight="Medium" />
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <ListBox ItemsSource="{Binding Devices}"
+                                    SelectedItem="{Binding SelectedDevices}"
+                                    SelectionMode="Multiple"
+                                    Height="Auto"
+                                    BorderBrush="Transparent">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding DeviceName}" />
+                                        <CheckBox IsChecked="{Binding IsSelected}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
+                        <StackPanel Margin="0 0 0 20" Height="Auto">
+
+                        </StackPanel>
+                    </Grid>
+                    
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <Button Command="{Binding CreateCustomerCommand}" Grid.Row="2" Content="ADD CUSTOMER" Height="44" Width="188" />
+
     </Grid>
 </UserControl>

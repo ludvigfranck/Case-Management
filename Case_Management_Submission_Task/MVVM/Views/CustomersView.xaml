@@ -42,47 +42,77 @@
 
         </Grid>
 
-        <Grid Grid.Column="1">
+        <Grid Grid.Column="1" Margin="0 20 0 20">
 
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="60" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <Border BorderBrush="Black" BorderThickness="1" VerticalAlignment="Center">
-                <Grid Grid.Row="0">
+            <TextBlock Grid.Row="0" Text="PERSONAL INFOMATION" FontSize="18" FontWeight="Medium" />
+
+            <Border BorderBrush="Black" BorderThickness="1" VerticalAlignment="Center" Grid.Row="1">
+                <Grid Grid.Row="1">
 
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel Grid.Column="0">
-                        <TextBlock Text="First name:" Margin="10" FontWeight="Medium" />
-                        <TextBlock Text="Last name:" Margin="10" FontWeight="Medium" />
-                        <TextBlock Text="Email:" Margin="10" FontWeight="Medium" />
-                        <TextBlock Text="Phone number:" Margin="10" FontWeight="Medium" />
-                        <TextBlock Text="Street name:" Margin="10" FontWeight="Medium" />
-                        <TextBlock Text="Postal code:" Margin="10" FontWeight="Medium" />
-                        <TextBlock Text="City:" Margin="10" FontWeight="Medium" />
-                    </StackPanel>
+                    <Grid Grid.Column="0" VerticalAlignment="Center" Margin="0 0 15 0">
 
-                    <StackPanel Grid.Column="1">
-                        <TextBlock Name="tb_firstName" Text="{Binding SelectedCustomer.FirstName}" Margin="10"  />
-                        <TextBlock Name="tb_lastName" Text="{Binding SelectedCustomer.LastName}" Margin="10"  />
-                        <TextBlock Name="tb_email" Text="{Binding SelectedCustomer.Email}" Margin="10"  />
-                        <TextBlock Name="tb_phoneNumber" Text="{Binding SelectedCustomer.PhoneNumber}" Margin="10"  />
-                        <TextBlock Name="tb_streetName" Text="{Binding SelectedCustomer.StreetName}" Margin="10"  />
-                        <TextBlock Name="tb_postalCode" Text="{Binding SelectedCustomer.PostalCode}" Margin="10"  />
-                        <TextBlock Name="tb_city" Text="{Binding SelectedCustomer.City}" Margin="10"  />
-                    </StackPanel>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="First name:" Margin="10 10 0 10" FontWeight="Medium" />
+                            <TextBlock Text="Last name:" Margin="10 10 0 10" FontWeight="Medium" />
+                            <TextBlock Text="Email:" Margin="10 10 0 10" FontWeight="Medium" />
+                            <TextBlock Text="Phone number:" Margin="10 10 0 10" FontWeight="Medium" />
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1">
+                            <TextBlock Name="tb_firstName" Text="{Binding SelectedCustomer.FirstName}" Margin="10 10 0 10" />
+                            <TextBlock Name="tb_lastName" Text="{Binding SelectedCustomer.LastName}" Margin="10 10 0 10" />
+                            <TextBlock Name="tb_email" Text="{Binding SelectedCustomer.Email}" Margin="10 10 0 10" />
+                            <TextBlock Name="tb_phoneNumber" Text="{Binding SelectedCustomer.PhoneNumber}" Margin="10 10 0 10" />
+                        </StackPanel>
+
+                    </Grid>
+
+                    <Grid Grid.Column="1" VerticalAlignment="Center"  Margin="15 0 0 0">
+                       
+                        <Grid>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="Street name:" Margin="10 10 0 10" FontWeight="Medium" />
+                                <TextBlock Text="Postal code:" Margin="10 10 0 10" FontWeight="Medium" />
+                                <TextBlock Text="City:" Margin="10 10 0 10" FontWeight="Medium" />
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1">
+                                <TextBlock Name="tb_streetName" Text="{Binding SelectedCustomer.StreetName}" Margin="10 10 0 10" />
+                                <TextBlock Name="tb_postalCode" Text="{Binding SelectedCustomer.PostalCode}" Margin="10 10 0 10" />
+                                <TextBlock Name="tb_city" Text="{Binding SelectedCustomer.City}" Margin="10 10 0 10" />
+                                <TextBlock Margin="10 10 0 10" />
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
 
                 </Grid>
             </Border>
 
-            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Command="{Binding NavigateToCreateCaseCommand}" Content="Add Case" Width="188" Height="40" Margin="0 0 10 0" />
-                <Button Content="Edit Cases" Width="188" Height="40" Margin="10 0 0 0" />
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Command="{Binding NavigateToAddCaseCommand}" Content="Add Case" Width="150" Height="40" Margin="0 0 10 0" />
+                <Button Command="{Binding NavigateToEditCasesCommand}" Content="Edit Cases" Width="150" Height="40" Margin="10 0 0 0" />
             </StackPanel>
         </Grid>
         

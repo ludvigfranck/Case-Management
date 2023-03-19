@@ -24,10 +24,12 @@ namespace Case_Management_Submission_Task.MVVM.Models.Entities
         [Column(TypeName = "char(13)")]
         public string? PhoneNumber { get; set; }
 
+
         public int AddressId { get; set; }
         
         [ForeignKey("AddressId")]
         public AddressEntity Address { get; set; } = null!;
+
         public ICollection<DeviceEntity> Devices { get; set; } = new HashSet<DeviceEntity>();
 
 
@@ -39,7 +41,7 @@ namespace Case_Management_Submission_Task.MVVM.Models.Entities
                 FirstName = customerModel.FirstName,
                 LastName = customerModel.LastName,
                 Email = customerModel.Email,
-                PhoneNumber = customerModel.PhoneNumber,
+                PhoneNumber = customerModel.PhoneNumber
             };
         }
 

@@ -1,13 +1,12 @@
 ﻿using Case_Management_Submission_Task.Helpers;
 using Case_Management_Submission_Task.MVVM.Models;
 using Case_Management_Submission_Task.Services;
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Documents;
 using System.Windows.Input;
 
 namespace Case_Management_Submission_Task.MVVM.ViewModels
@@ -15,20 +14,23 @@ namespace Case_Management_Submission_Task.MVVM.ViewModels
     internal class CustomersViewModel : ObservableObject
     {
         private readonly NavigationStore _navigationStore;
-        private readonly CustomerService _customerService;
+        private readonly DatabaseService _databaseService;
+
         private ObservableCollection<CustomerModel> _customers;
         private CustomerModel _selectedCustomer;
 
-        public CustomersViewModel(NavigationStore navigationStore, CustomerService customerService)
+        public CustomersViewModel(NavigationStore navigationStore, DatabaseService databaseService)
         {
             _navigationStore = navigationStore;
-            _customerService = customerService;
+            _databaseService = databaseService;
+
+            LoadCustomersAsync();
+
             _customers = new ObservableCollection<CustomerModel>();
             _selectedCustomer = default(CustomerModel)!;
 
-            NavigateToCreateCaseCommand = new NavigateCommand<CreateCaseViewModel>(navigationStore, () => new CreateCaseViewModel(_navigationStore, _customerService, _selectedCustomer));
-
-            LoadCustomersAsync().ConfigureAwait(false);
+            NavigateToAddCaseCommand = new NavigateCommand<AddCaseViewModel>(navigationStore, () => new AddCaseViewModel(_navigationStore, _databaseService, _selectedCustomer));
+            NavigateToEditCasesCommand = new NavigateCommand<EditCasesViewModel>(navigationStore, () => new EditCasesViewModel(_navigationStore, _databaseService, _selectedCustomer));
         }
 
         public ObservableCollection<CustomerModel> Customers
@@ -36,27 +38,23 @@ namespace Case_Management_Submission_Task.MVVM.ViewModels
             get { return _customers; }
             set { _customers = value; }
         }
-
         public CustomerModel SelectedCustomer
         {
-            get => _selectedCustomer;
-            set
-            {
-                _selectedCustomer = value;
-            }
+            get { return _selectedCustomer; }
+            set { _selectedCustomer = value; }
         }
 
-        public async Task LoadCustomersAsync()
+        public ICommand NavigateToAddCaseCommand { get; }
+        public ICommand NavigateToEditCasesCommand { get; }
+
+        private async void LoadCustomersAsync()
         {
-            var _customers = await _customerService.GetAllAsync();
-
-            if (_customers != null)
+            var _result = await _databaseService.GetAllCustomersAsync();
+            if (_result != null)
             {
-                foreach (var customer in _customers)
-                    Customers.Add(customer);
+                foreach (var _customer in _result)
+                    _customers.Add(_customer);
             }
         }
-
-        public ICommand NavigateToCreateCaseCommand { get; }
     }
 }
